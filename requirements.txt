@@ -194,7 +194,6 @@ PyAutoGUI==0.9.53
 pybase64==1.2.1
 pycparser==2.21
 pycryptodome==3.14.1
-pycurl @ file:///D:/pycurl-7.45.1-cp39-cp39-win_amd64.whl
 pydantic==1.10.4
 pydicom==2.3.1
 pydot==1.4.2
