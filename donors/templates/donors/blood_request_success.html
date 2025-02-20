@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Blood Donors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <h2 class="text-success text-center">Blood Request Processed</h2>
+    <p class="text-center">Your blood request has been submitted successfully.</p>
+
+    <h3 class="mt-4 text-danger">Available Donors:</h3>
+
+    {% if donors %}
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Blood Type</th>
+                    <th>Wilaya</th>
+                    <th>Phone</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for donor in donors %}
+                    <tr>
+                        <td>{{ donor.blood_type }}</td>
+                        <td>{{ donor.wilaya }}</td>
+                        <td>{{ donor.phone }}</td>
+                        <td>
+                            <a href="tel:{{ donor.phone }}" class="btn btn-success btn-sm">📞 Call</a>
+                            <a href="sms:{{ donor.phone }}?body=We urgently need {{ donor.blood_type }} blood in {{ donor.wilaya }}!"
+                               class="btn btn-warning btn-sm">📩 SMS</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-danger text-center">
+            No available donors in your area. Try again later.
+        </div>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <a href="/" class="btn btn-secondary">Back to Home</a>
+    </div>
+</body>
+</html>

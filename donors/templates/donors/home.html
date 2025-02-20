@@ -1,0 +1,73 @@
+{% extends 'donors/base.html' %}
+
+{% block title %}Home - Blood Donation{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="container text-center mt-5 hero-section">
+    <h1 class="hero-title">Be a Hero, Save Lives ❤️</h1>
+    <p class="lead">Your donation can save up to 3 lives. Take action today!</p>
+
+    <!-- CTA Buttons -->
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{% url 'register_donor' %}" class="btn btn-cta me-3">Register as a Donor</a>
+        <a href="{% url 'request_blood' %}" class="btn btn-cta">Request Blood</a>
+    </div>
+</div>
+
+<!-- Recent Blood Requests -->
+<div class="container mt-5">
+    <h3 class="text-center section-title mb-3">Recent Blood Requests</h3>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered shadow-sm">
+            <thead class="table-header">
+                <tr class="text-center">
+                    <th>Blood Type</th>
+                    <th>Wilaya</th>
+                    <th>Requested On</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if requests %}
+                    {% for request in requests %}
+                        <tr class="text-center">
+                            <td><strong>{{ request.blood_type }}</strong></td>
+                            <td>{{ request.wilaya }}</td>
+                            <td>{{ request.created_at|date:"M d, Y" }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center text-muted">No recent blood requests.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Blood Type Availability -->
+<div class="container mt-5">
+    <h3 class="text-center section-title">Blood Type Availability</h3>
+    <div class="row justify-content-center mt-4">
+        {% for blood_type, count in blood_availability.items %}
+            <div class="col-md-3 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{ blood_type }}</h5>
+                        <p class="card-text">
+                            {% if count == 0 %}
+                                <span class="badge bg-danger">Out of Stock</span>
+                            {% elif count <= 2 %}
+                                <span class="badge bg-warning">Low Supply ({{ count }})</span>
+                            {% else %}
+                                <span class="badge bg-success">Available ({{ count }})</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
