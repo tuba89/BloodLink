@@ -151,7 +151,6 @@ nipype==1.7.0
 nltk==3.7
 notebook==6.4.10
 notebook-as-pdf==0.5.0
-numpy==1.23.25
 oauthlib==3.2.0
 openai==0.27.8
 opencage==2.0.0
