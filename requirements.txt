@@ -44,7 +44,6 @@ cycler==0.11.0
 debugpy==1.5.1
 decorator==5.1.1
 deep-translator==1.9.1
-deepspeech==0.9.3
 defusedxml==0.7.1
 discord==1.7.3
 discord.py==1.7.3
@@ -115,7 +114,6 @@ keras==2.9.0
 keras-nightly==2.10.0.dev2022052507
 Keras-Preprocessing==1.1.2
 Kivy==2.1.0
-kivy-deps.angle==0.3.2
 kivy-deps.glew==0.3.1
 kivy-deps.gstreamer==0.3.3
 kivy-deps.sdl2==0.4.5
