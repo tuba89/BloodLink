@@ -12,3 +12,4 @@ phonenumbers
 twilio
 qrcode
 gunicorn
+whitenoise
